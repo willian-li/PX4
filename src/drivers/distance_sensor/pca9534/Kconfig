@@ -1,0 +1,5 @@
+menuconfig DRIVERS_DISTANCE_SENSOR_PCA9534
+	bool "pca9534"
+	default n
+	---help---
+		Enable support for pca9534

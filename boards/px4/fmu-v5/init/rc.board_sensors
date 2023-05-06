@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# PX4 FMUv5 specific board sensors init
+#------------------------------------------------------------------------------
+
+board_adc start
+
+if ver hwtypecmp V552 V562
+then
+	# Internal SPI bus ICM-42688-P
+	icm42688p -s -R 2 -q start
+else
+	# Internal SPI bus ICM-20602
+	icm20602 -s -R 2 -q start
+fi
+
+# Internal SPI bus ICM-20689
+icm20689 -s -R 2 start
+
+# Internal SPI bus BMI055 accel/gyro
+bmi055 -A -R 2 -s start
+bmi055 -G -R 2 -s start
+
+# Baro on internal SPI
+ms5611 -s start
+
+# internal compass
+ist8310 -I -R 10 start
+
+# External compass on GPS1/I2C1 (the 3rd external bus): standard Holybro Pixhawk 4 or CUAV V5 GPS/compass puck (with lights, safety button, and buzzer)
+ist8310 -X -b 1 -R 10 start
+
+#vl53l1x start -X -b 2
+pca9534 start -X -b 2
+
+# 右 y
+vl53l1x start -X  -a 0x32 -R 2
+#左 y
+vl53l1x start -X  -a 0x31 -R 6
+# 右后 y
+vl53l1x start -X  -a 0x35 -R 3
+#上 y
+vl53l1x start -X  -a 0x33 -R 24
+#右前 y
+vl53l1x start -X  -a 0x34 -R 1
+# 左前 y
+vl53l1x start -X  -a 0x30 -R 7
+#下 y
+vl53l1x start -X  -a 0x36 -R 25
+#左后 y
+vl53l1x start -X  -a 0x37 -R 5
