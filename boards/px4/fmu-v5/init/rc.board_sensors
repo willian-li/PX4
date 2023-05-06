@@ -38,14 +38,14 @@ vl53l1x start -X  -a 0x32 -R 2
 #左 y
 vl53l1x start -X  -a 0x31 -R 6
 # 右后 y
-vl53l1x start -X  -a 0x35 -R 3
+#vl53l1x start -X  -a 0x35 -R 3
 #上 y
 vl53l1x start -X  -a 0x33 -R 24
 #右前 y
-vl53l1x start -X  -a 0x34 -R 1
+#vl53l1x start -X  -a 0x34 -R 1
 # 左前 y
-vl53l1x start -X  -a 0x30 -R 7
+#vl53l1x start -X  -a 0x30 -R 7
 #下 y
 vl53l1x start -X  -a 0x36 -R 25
 #左后 y
-vl53l1x start -X  -a 0x37 -R 5
+#vl53l1x start -X  -a 0x37 -R 5
